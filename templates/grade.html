@@ -1,0 +1,106 @@
+{% extends 'index.html' %}
+{%block body %}
+ <div id="container" style="min-width:400px;height:400px">{% block div %}{% end %}</div>
+    <table class="table" border=1>
+        <caption>学生成绩折线图</caption>
+        <tr>
+            <th>月份</th>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+            <td>11</td>
+            <td>12</td>
+        </tr>
+        <tr>
+            <th>成绩</th>
+            <form id="gradechart" method="post" action="/grade">
+                <td class="">
+                    <input type="text" name="grade1" style="border:none" value="54">
+                </td>
+                <td class="">
+                    <input type="text" name="grade2" style="border:none" value="68">
+                </td>
+                <td class="">
+                    <input type="text" name="grade3" style="border:none" value="89">
+                </td>
+                <td class="">
+                    <input type="text" name="grade4" style="border:none" value="99">
+                </td>
+                <td class="">
+                    <input type="text" name="grade5" style="border:none" value="76">
+                </td>
+                <td class="">
+                    <input type="text" name="grade6" style="border:none" value="58">
+                </td>
+                <td class="">
+                    <input type="text" name="grade7" style="border:none" value="100">
+                </td>
+                <td class="">
+                    <input type="text" name="grade8" style="border:none" value="99">
+                </td>
+                <td class="">
+                    <input type="text" name="grade9" style="border:none" value="32">
+                </td>
+                <td class="">
+                    <input type="text" name="grade10" style="border:none" value="67">
+                </td>
+                <td class="">
+                    <input type="text" name="grade11" style="border:none" value="55">
+                </td>
+                <td class="">
+                    <input type="text" name="grade12" style="border:none" value="44">
+                </td>
+        </tr>
+    </table>
+    <input type="submit">
+    </form>
+<script>
+    var chart = new Highcharts.Chart('container',{
+    	title: {
+    		text: '学生成绩折线图',
+    		x: -20
+    	},
+    	subtitle: {
+    		text: 'highcharts练习',
+    		x: -20
+    	},
+    	xAxis: {
+    		categories: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+    	},
+    	yAxis: {
+    		title: {
+    			text: '分数'
+    		},
+    		plotLines: [{
+    		value: 0,
+    		width: 1,
+    		color: '#808080'
+    		}]
+    	},
+    	tooltip: {
+    		valueSuffix: '分'
+    	},
+    	legend: {
+    		layout: 'vertical',
+    		align: 'right',
+    		verticalAlign: 'middle',
+    		borderWidth: 0
+    	},
+    	series: [{
+    		name: '成绩',
+    		data: [{{ g1 }}, {{ g2 }}, {{ g3 }}, {{ g4 }}, {{ g5 }}, {{ g6 }}, {{ g7 }}, {{ g8}}, {{ g9 }}, {{ g10 }}, {{ g11 }}, {{ g12 }}]
+    	}]
+    });
+
+</script>
+
+{%end%}
+
+
